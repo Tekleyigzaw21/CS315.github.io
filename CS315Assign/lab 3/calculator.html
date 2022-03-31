@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+    <style>
+      .calc {
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calc">
+      <p>First Value</p>
+      <input type="text" class="first" id="finput" /><br /><br />
+      <p>Second Value</p>
+      <input type="text" class="second"  id="linput"/><br /><br />
+      <p>Operations</p>
+      <label
+        ><button onclick="adding()" class="plus">+</button>&nbsp<button onclick="subtract()" class="minus">-</button
+        >&nbsp<button onclick="multiply()" class="multi">*</button></label
+      ><br /><br />
+      <p >Result
+        <p class="result" id="operation" ></p>
+      </p>
+    </div>
+    <script src="assignm3.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3</title>
+    <style>
+      .inout {
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="inout">
+      <div>
+        <p>Input</p>
+        <input type="text" id="inp" value="tekle" />
+      </div>
+      <br />
+      <div>
+        <p>Output</p>
+        <textarea name="" id="outp" cols="20" rows="5"></textarea>
+      </div>
+      <br />
+      <div>
+        <button class="button">Click to add</button>
+      </div>
+    </div>
+    <script>
+      let buttn = document.querySelector(".button");
+      buttn.addEventListener("click", function () {
+        let input = document.getElementById("inp");
+        let output = document.getElementById("outp");
+        output.innerHTML = input.value;
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>

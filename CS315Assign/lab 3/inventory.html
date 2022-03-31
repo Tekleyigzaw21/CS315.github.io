@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invontory</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="invent">
+      <h2>Inventory</h2>
+      <br />
+      <p>Item Name</p>
+      <input type="text" id="names" /><br />
+      <p>Item Catagory</p>
+      <input type="text" id="catagories" />
+      <p class="quan">Quantity</p>
+      <input type="text" id="quantities" /><br />
+      <br />
+      <button onclick="itemAdd">Add</button><br /><br /><br />
+      <table class="tableList">
+        <tr>
+          <th>Product Name</th>
+          <th>Catagory</th>
+          <th>Quantity</th>
+        </tr>
+      </table>
+    </div>
+    <script>
+      let itemAdd = function () {
+        let names = document.getElementById("names").value;
+        console.log(names);
+        let catag = document.getElementById("catagories").value;
+        let quan = document.getElementById("quantities").value;
+        let tableList = document.querySelector(".tableList").value;
+        let index = 1;
+
+        let row = tableList.insertRow(index);
+        let cell1 = row.append(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+
+        cell1.innerHTML = names;
+        cell2.innerHTML = catag;
+        cell3.innerHTML = quan;
+
+        document.getElementById("names").value = "";
+        document.getElementById("catagories").value = "";
+        document.getElementById("quantities").value = "";
+
+        index++;
+      };
+      itemAdd();
+    </script>
+  </body>
+</html>
