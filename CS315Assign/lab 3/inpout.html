@@ -24,17 +24,29 @@
       </div>
       <br />
       <div>
-        <button class="button">Click to add</button>
+        <button id="button">Click to add</button>
       </div>
     </div>
     <script>
-      let buttn = document.querySelector(".button");
-      buttn.addEventListener("click", function () {
+      // let buttn = document.querySelector(".button");
+      // buttn.style.backgroundColor = "red";
+      // buttn.addEventListener("click", function () {
+      //   let input = document.getElementById("inp");
+      //   let output = document.getElementById("outp");
+      //   output.innerHTML = input.value;
+      //   input.value = "";
+      // });
+      window.onload = pageLoad;
+
+      function pageLoad() {
+        document.getElementById("button").onclick = buttn;
+      }
+      function buttn() {
         let input = document.getElementById("inp");
         let output = document.getElementById("outp");
         output.innerHTML = input.value;
         input.value = "";
-      });
+      }
     </script>
     <br /><br /><br /><br />
     <a

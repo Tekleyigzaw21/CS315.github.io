@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invontory</title>
+    <!-- <link rel="stylesheet" href="style4.css" />  -->
+    <style>
+      .invent {
+        margin-left: 120px;
+      }
+      p ~ input {
+        width: 97%;
+        border: 2px solid rgb(236, 230, 230);
+      }
+      /* .quan ~ input {
+        border: 2px solid rgb(38, 36, 36);
+      } */
+      table {
+        width: 97%;
+      }
+      tr {
+        height: 35px;
+      }
+      .th {
+        background-color: blue;
+        color: aliceblue;
+        border: 1px solid rgb(70, 66, 66);
+        width: 100px;
+        padding-right: 200px;
+      }
+      /* #bt {
+        padding-right: 2px;
+      } */
+      #btn {
+        height: 35px;
+        margin-left: 0px;
+        position: relative;
+        justify-content: flex-start;
+      }
+      td {
+        border: 1px solid rgb(184, 179, 179);
+        /* background-color: rgb(165, 163, 160); */
+      }
+      /* tr:hover {
+        background-color: pink;
+      } */
+
+      input ~ button {
+        text-align: center;
+        margin-left: 45%;
+        background-color: rgb(58, 146, 58);
+      }
+
+      #myInput:focus {
+        outline: 3px solid #ddd;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown a:hover {
+        background-color: #ddd;
+      }
+
+      .show {
+        display: block;
+      }
+    </style>
+
+    <script>
+      window.onload = pageLoad;
+      function pageLoad() {
+        document.getElementById("itemAdd").onclick = itemAdd;
+        document.querySelector(".remClass").onclick = removeFun;
+      }
+      function itemAdd() {
+        let names = document.getElementById("names").value;
+        console.log(names);
+        let catag = document.getElementById("catagories").value;
+        let quan = document.getElementById("quantities").value;
+        let rate = document.getElementById("ratings").value;
+        let tableList = document.getElementById("tableList");
+        let index = 1;
+        let row = tableList.insertRow(index);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+
+        cell1.innerHTML = names;
+        cell2.innerHTML = catag;
+        cell3.innerHTML = parseInt(quan);
+        cell4.innerHTML = rate;
+        if (!parseInt(quan)) {
+          alert("Price is not a number");
+          cell3.style.backgroundColor = "red";
+        }
+        if (names === "" || catag === "" || quan === "" || rate === "") {
+          alert("There is empty field, you have to fill🟥");
+          cell1.innerHTML = "";
+          cell2.innerHTML = "";
+          cell3.innerHTML = "";
+          cell4.innerHTML = "";
+        }
+
+        function removeFun() {
+          cell1 = "";
+          cell2 = "";
+          cell3 = "";
+          cell4 = "";
+        }
+
+        document.getElementById("names").value = "";
+        document.getElementById("catagories").value = "";
+        document.getElementById("quantities").value = "";
+        document.getElementById("ratings").value = "";
+
+        index++;
+
+        /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        function filterFunction() {
+          let input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          div = document.getElementById("myDropdown");
+          a = div.getElementsByTagName("a");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="invent">
+      <h2>Inventory</h2>
+      <br />
+      <p>Item Name</p>
+      <input type="text" id="names" /><br />
+      <p>Item Catagory</p>
+      <input type="text" id="catagories" />
+      <p class="quan">Quantity</p>
+      <input type="text" id="quantities" /><br />
+      <p class="rate">Ratings</p>
+      <input type="text" id="ratings" /><br />
+      <br />
+      <button id="itemAdd">Add</button><br /><br /><br />
+      <table id="tableList">
+        <tr>
+          <th class="th" id="nam">Product Name</th>
+          <th class="th" id="catago">Catagory</th>
+          <th class="th" id="price">Price</th>
+          <th class="th" id="rating">Ratings</th>
+          <th id="bt"><button id="btn">Edit</button></th>
+          <th id="bt"><button id="btn" class="remClass">Remove</button></th>
+        </tr>
+      </table>
+      <br /><br /><br /><br />
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <input
+            type="text"
+            placeholder="Search.."
+            id="myInput"
+            onkeyup="filterFunction()"
+          />
+          <a href="#nam">Product Name</a>
+          <a href="#catago">Catagory</a>
+          <a href="#price">Price</a>
+          <a href="#rating">Ratings</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+<body>
+
+<h2>Search/Filter Dropdown</h2>
+<p>Click on the button to open the dropdown menu, and use the input field to search for a specific dropdown link.</p>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#about">About</a>
+    <a href="#base">Base</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+    <a href="#custom">Custom</a>
+    <a href="#support">Support</a>
+    <a href="#tools">Tools</a>
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html> -->

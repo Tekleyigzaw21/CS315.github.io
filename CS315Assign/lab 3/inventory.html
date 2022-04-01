@@ -5,7 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invontory</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style4.css" />  -->
+    <style>
+      .invent {
+        margin-left: 120px;
+      }
+      p ~ input {
+        width: 97%;
+        border: 2px solid rgb(236, 230, 230);
+      }
+      .quan ~ input {
+        border: 2px solid rgb(38, 36, 36);
+      }
+      th {
+        background-color: blue;
+        color: aliceblue;
+        border: 1px solid rgb(70, 66, 66);
+        width: 99px;
+        padding-right: 350px;
+      }
+      td {
+        border: 1px solid rgb(184, 179, 179);
+        /* background-color: rgb(165, 163, 160); */
+      }
+
+      input ~ button {
+        text-align: center;
+        margin-left: 45%;
+        background-color: rgb(58, 146, 58);
+      }
+    </style>
   </head>
   <body>
     <div class="invent">
@@ -18,8 +47,8 @@
       <p class="quan">Quantity</p>
       <input type="text" id="quantities" /><br />
       <br />
-      <button onclick="itemAdd">Add</button><br /><br /><br />
-      <table class="tableList">
+      <button id="itemAdd">Add</button><br /><br /><br />
+      <table id="tableList">
         <tr>
           <th>Product Name</th>
           <th>Catagory</th>
@@ -28,16 +57,20 @@
       </table>
     </div>
     <script>
-      let itemAdd = function () {
+      window.onload = pageLoad;
+      function pageLoad() {
+        document.getElementById("itemAdd").onclick = itemAdd;
+      }
+      function itemAdd() {
         let names = document.getElementById("names").value;
         console.log(names);
         let catag = document.getElementById("catagories").value;
         let quan = document.getElementById("quantities").value;
-        let tableList = document.querySelector(".tableList").value;
+        let tableList = document.getElementById("tableList");
         let index = 1;
 
         let row = tableList.insertRow(index);
-        let cell1 = row.append(0);
+        let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
 
@@ -48,10 +81,8 @@
         document.getElementById("names").value = "";
         document.getElementById("catagories").value = "";
         document.getElementById("quantities").value = "";
-
         index++;
-      };
-      itemAdd();
+      }
     </script>
   </body>
 </html>
