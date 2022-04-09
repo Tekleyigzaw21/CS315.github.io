@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Assignment</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 30px;
+      }
+      header {
+        /* border: 1px solid red; */
+        margin: 10px;
+        height: 80px;
+        width: 95%;
+        position: relative;
+        background-color: aliceblue;
+      }
+      .leftHeader {
+        float: left;
+        margin-left: 10px;
+      }
+      .rightHeader {
+        float: right;
+        margin-top: 20px;
+      }
+      label {
+        margin: 60px;
+      }
+      #bodyLeft {
+        margin-top: -10px;
+        margin-left: 10px;
+        float: left;
+        width: 65%;
+        height: 640px;
+        background: #ccc;
+        padding: 20px;
+      }
+
+      #bodyRight {
+        margin-top: -10px;
+        float: left;
+        padding: 10px;
+        width: 30%;
+        background-color: #ccc;
+        height: 640px;
+      }
+      #left3 {
+        background-color: aliceblue;
+        margin: -13px;
+        padding: 5px;
+      }
+      #left2 {
+        background-color: aliceblue;
+      }
+      #right1,
+      #right2,
+      #right3,
+      #right4,
+      #right5 {
+        background-color: aliceblue;
+        margin-right: -5px;
+        margin-left: -10px;
+        margin-top: -9px;
+        padding-left: 5px;
+        font-size: small;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="leftHeader">
+        <h3>Bidhan Tech Blog</h3>
+        <p style="font-size: small; margin-top: -20px">
+          An Example Technology Blog
+        </p>
+      </div>
+      <div class="rightHeader">
+        <label>HOME</label>
+        <label>RECENT POSTS</label>
+        <label>BLOG</label>
+        <label>ABOUT ME</label>
+        <label>CONTACT ME</label>
+      </div>
+    </header>
+    <!-- <br /><br /><br /> -->
+    <section class="bottomPart">
+      <div id="bodyLeft">
+        <div id="left3">
+          <h2>An Example Post #3</h2>
+          <p>
+            The float property was introduced to allow web developers layout
+          </p>
+          <a href="defoalt"
+            ><img
+              src="/CS315.github.io/images/Eotc.jpg"
+              alt="Church"
+              style="width: 200px; height: 100px; float: left"
+          /></a>
+          <p>
+            The float property was introduced to allow web developers to
+            implement simple layouts involving an image floating inside a column
+            of text, with the text wrapping around the left or right of it. The
+            kind of thing you might get in a newspaper layout.
+          </p>
+          <button
+            style="margin-left: 20px; background-color: rgb(167, 167, 240)"
+          >
+            Read More
+          </button>
+        </div>
+        <div
+          id="left2"
+          style="
+            background-color: aliceblue;
+            margin: -13px;
+            padding: 10px;
+            margin-top: 20px;
+          "
+        >
+          <h2>An Example Post #2</h2>
+          <p>
+            The float property was introduced to allow web developers layout
+          </p>
+          <p>
+            The float property was introduced to allow web developers to
+            implement simple layouts involving an image floating inside a column
+            of text, with the text wrapping around the left or right of it. The
+            kind of thing you might get in a newspaper layout.
+          </p>
+          <button
+            style="margin-left: 20px; background-color: rgb(167, 167, 240)"
+          >
+            Read More
+          </button>
+        </div>
+        <div
+          id="left1"
+          style="
+            background-color: aliceblue;
+            margin: -13px;
+            padding: 10px;
+            margin-top: 20px;
+          "
+        >
+          <h2>An Example Post #1</h2>
+          <p>
+            The float property was introduced to allow web developers layout
+          </p>
+          <a href="defoalt"
+            ><img
+              src="/CS315.github.io/images/lalibela.jpg"
+              alt="Church"
+              style="width: 200px; height: 100px; float: left"
+          /></a>
+          <p>
+            The float property was introduced to allow web developers to
+            implement simple layouts involving an image floating inside a column
+            of text, with the text wrapping around the left or right of it. The
+            kind of thing you might get in a newspaper layout.
+          </p>
+          <button
+            style="margin-left: 20px; background-color: rgb(167, 167, 240)"
+          >
+            Read More
+          </button>
+        </div>
+      </div>
+      <div id="bodyRight">
+        <div id="right5" style="margin-top: -20px">
+          <h3>Search</h3>
+          <div style="border: 2.5px solid; margin-left: -5px"></div>
+          <label>Search for</label
+          ><input type="text" placeholder="search" /><input
+            type="button"
+            value="Search"
+          />
+        </div>
+        <div id="right4">
+          <h3>Recent Posts</h3>
+          <div style="border: 2.5px solid; margin-left: -5px"></div>
+          <p>An Example Post #3</p>
+          <p>An Example Post #2</p>
+          <p>An Example Post #1</p>
+          <p>An Example Post #0</p>
+        </div>
+        <div id="right3">
+          <h3>Pages</h3>
+          <div style="border: 2.5px solid; margin-left: -5px"></div>
+          <p>About Me</p>
+          <p>Contact Me</p>
+          <p>Cookies & Privacy</p>
+          <p>Terms and Conditions</p>
+        </div>
+        <div id="right2">
+          <h3>Catagories</h3>
+          <div style="border: 2.5px solid; margin-left: -5px"></div>
+          <p>Blog Post</p>
+          <p>Example Post</p>
+          <p>Nature</p>
+        </div>
+        <div id="right1">
+          <h3>Recent Posts</h3>
+          <div style="border: 2.5px solid; margin-left: -5px"></div>
+          <p>An Example Post #3</p>
+          <p>An Example Post #2</p>
+          <p>An Example Post #1</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

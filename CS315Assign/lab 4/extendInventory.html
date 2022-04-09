@@ -5,91 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invontory</title>
-    <!-- <link rel="stylesheet" href="style4.css" />  -->
-    <style>
-      .invent {
-        margin-left: 120px;
-      }
-      p ~ input {
-        width: 97%;
-        border: 2px solid rgb(236, 230, 230);
-      }
-      /* .quan ~ input {
-        border: 2px solid rgb(38, 36, 36);
-      } */
-      table {
-        width: 97%;
-      }
-      tr {
-        height: 35px;
-      }
-      .th {
-        background-color: blue;
-        color: aliceblue;
-        border: 1px solid rgb(70, 66, 66);
-        width: 100px;
-        padding-right: 200px;
-      }
-      /* #bt {
-        padding-right: 2px;
-      } */
-      #btn {
-        height: 35px;
-        width: 90px;
-        margin-left: 0px;
-        position: relative;
-        justify-content: flex-start;
-      }
-      td {
-        border: 1px solid rgb(184, 179, 179);
-        /* background-color: rgb(165, 163, 160); */
-      }
-      /* tr:hover {
-        background-color: pink;
-      } */
-
-      input ~ button {
-        text-align: center;
-        margin-left: 45%;
-        background-color: rgb(58, 146, 58);
-      }
-
-      #myInput:focus {
-        outline: 3px solid #ddd;
-      }
-
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f6f6f6;
-        min-width: 230px;
-        overflow: auto;
-        border: 1px solid #ddd;
-        z-index: 1;
-      }
-
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-      }
-
-      .dropdown a:hover {
-        background-color: #ddd;
-      }
-
-      .show {
-        display: block;
-      }
+     <link rel="stylesheet" href="extEven.css" />  
     </style>
+    <script>
+      document.getElementById("ewr").style.display="none";
+    </script>
   </head>
   <body>
+    <p>
+      <label id="21">TEK</label>
+      <label class="T21">tkghjgjhggjhkjhhkkjkl</label>
+      <input type="text" id="ewr" placeholder="Enter your Name">
+      <input type="submit" value="submit" id="submitId">
+    </p>
     <div class="invent">
       <h2>Inventory</h2>
       <br />
@@ -109,12 +37,12 @@
           <th class="th" id="catago">Catagory</th>
           <th class="th" id="price">Price</th>
           <th class="th" id="rating">Ratings</th>
-          <th id="bt"><button id="btn">Edit</button></th>
-          <th id="bt"><button id="btn" class="remClass">Remove</button></th>
+          <th id="bt"><button onclick="editBtn" id="btn">Edit</button></th>
+          <th id="bt"><button onclick="removeBtn" id="btn" class="remClass">Remove</button></th>
         </tr>
       </table>
       <br /><br /><br /><br />
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
         <div id="myDropdown" class="dropdown-content">
           <input
@@ -126,119 +54,11 @@
           <a href="#nam">Product Name</a>
           <a href="#catago">Catagory</a>
           <a href="#price">Price</a>
-          <a href="#rating">Ratings</a>
+          <a href="#rating">Ratings</a> -->
         </div>
       </div>
     </div>
 
-    <script>
-      let tableList = document.getElementById("tableList");
-      let update =
-        '<button  onclick= class="inventBtn" type="button" id="editId" >Edit</button>' +
-        '<button onclick= class="inventBtn" type="submit" id="saveId">Save</button>';
-      let removeBtn =
-        '<button onclick= class="inventBtn" type="button" id="deletId">Delet</button>';
-
-      window.onload = pageLoad;
-      function pageLoad() {
-        document.getElementById("itemAdd").onclick = itemAdd;
-
-        //How to add Button in a javaScript
-
-        let div = document.createElement("div");
-        div.innerHTML = removeBtn;
-        tableList[4].append(div);
-
-        let remBtn = document.createElement("div");
-        remBtn.innerHTML = update;
-        // document.body.append(remBtn);
-        tableList[5].append(remBtn);
-      }
-
-      function itemAdd() {
-        let names = document.getElementById("names").value;
-        let catag = document.getElementById("catagories").value;
-        let quan = document.getElementById("quantities").value;
-        let rate = document.getElementById("ratings").value;
-        // let update =
-        //   '<button class="inventBtn" type="button" id="editId" >Edit</button>' +
-        //   '<button  class="inventBtn" type="submit" id="saveId">Save</button>';
-        // let remove =
-        //   '<button class="inventBtn" type="button" id="deletId" style="font-size:20px; color:red; width:90px ">Delet</button>';
-        // let tableList = document.getElementById("tableList");
-
-        let index = 1;
-        let row = tableList.insertRow(index);
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
-        let cell4 = row.insertCell(3);
-        let cell5 = row.insertCell(4);
-        let cell6 = row.insertCell(5);
-
-        cell1.innerHTML = names;
-        cell2.innerHTML = catag;
-        cell3.innerHTML = parseInt(quan);
-        cell4.innerHTML = rate;
-        cell5.innerHTML = update;
-        cell6.innerHTML = removeBtn;
-
-        if (!parseInt(quan)) {
-          alert("Price is not a number");
-          cell3.style.backgroundColor = "red";
-        }
-        if (names === "" || catag === "" || quan === "" || rate === "") {
-          alert("There is empty field, you have to fill🟥");
-          cell1.innerHTML = "";
-          cell2.innerHTML = "";
-          cell3.innerHTML = "";
-          cell4.innerHTML = "";
-        }
-
-        document.getElementById("names").value = "";
-        document.getElementById("catagories").value = "";
-        document.getElementById("quantities").value = "";
-        document.getElementById("ratings").value = "";
-
-        index++;
-      }
-
-      function removeFun() {
-        // console.log(this);
-        this.parentNode.parentNode.remove();
-      }
-      function editFun() {
-        // console.log(this);
-        let childernOfRow = this.parentNode.parentNode.childern;
-        childernOfRow[0].remove();
-      }
-      function saveFun() {
-        // console.log(this);
-        editFun();
-        let childernOfRow = this.parentNode.parentNode.childern;
-        childernOfRow[0].prop("disabled", true);
-      }
-
-      /* When the user clicks on the button,
-      toggle between hiding and showing the dropdown content */
-      function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-      }
-      function filterFunction() {
-        let input, filter, ul, li, a, i;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        div = document.getElementById("myDropdown");
-        a = div.getElementsByTagName("a");
-        for (i = 0; i < a.length; i++) {
-          txtValue = a[i].textContent || a[i].innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-          } else {
-            a[i].style.display = "none";
-          }
-        }
-      }
-    </script>
+    <script src="extendEvent.js"></script>
   </body>
 </html>

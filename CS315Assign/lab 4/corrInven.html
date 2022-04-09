@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Correct Inventory</title>
+    <style>
+      table {
+        border: 1px solid blue;
+      }
+      td {
+        border: 1px solid blue;
+      }
+      button {
+        display: block;
+        margin: 10px;
+      }
+    </style>
+    <script>
+      let array = [
+        ,
+        { name: "name1", price: 100, rating: 4 },
+        { name: "name2", price: 200, rating: 1 },
+        { name: "name3", price: 3000, rating: 4 },
+        { name: "name4", price: 5000, rating: 3 },
+      ];
+      let selectedId;
+      window.onload = function () {
+        document.getElementsByTagName("button").onclick = initFun;
+      };
+      function initFun() {
+        createTable(array);
+      }
+      function createTable(array) {
+        let tableEl = document.getElementsByTagName("table")[0];
+        tableEl.innerHTML = "";
+        array.forEach(function (item) {
+          let trEl = document.createElement("tr");
+          trEl.innerHTML =
+            "<td>" +
+            item.name +
+            "</td><td>" +
+            item.price +
+            "</td><td>" +
+            item.ratings +
+            "</td><td>" +
+            "<button onclick='edit(this)'>Edit</button></td>";
+          let btn = document.createElement("button");
+          btn.onclick = remove;
+          btn.innerHTML = "Remove";
+          trEl.append(btn);
+          tableEl.append(trEl);
+        });
+      }
+      function sortItems() {
+        let sortArr = array.sort(function (item1, item2) {
+          return item1.price - item2.price;
+        });
+        createTable(sortArr);
+      }
+      function filterItems() {
+        let filteredItems = array.filter(function (item) {
+          return item.rating == 3;
+        });
+        createTable(filteredItems);
+      }
+
+      function edit(obj) {
+        obj.style.display = "blue";
+        let selectedColumn = obj;
+        let selectedTd = selectedColumn.parentNode;
+
+        let selectedRow = selectedTd.parentNode;
+        let allTids = selectedRow.children;
+
+        document.getElementById("textName").value = allTids.innerHTML;
+        document.getElementById("textPrice").value = allTids.innerHTML;
+        document.getElementById("textRating").value = allTids.innerHTML;
+      }
+      function remove() {
+        this.parentNode.remove();
+      }
+    </script>
+  </head>
+  <body>
+    <table></table>
+    <br /><br />
+    <button>Add Initial Data</button><br /><br />
+    <select name="filterData" id="opt" size="1" onchange="handleSelect(this)">
+      <option value="ratings3">Ratings > 3</option>
+      <option value="price40">Price > 40</option></select
+    ><br /><br />
+
+    <label>Name:</label><input type="textName" /><br /><br />
+    <label>Price:</label><input type="textPrice" /><br /><br />
+    <lable>Ratings:</lable><input type="textRating" /><br /><br /><br />
+
+    <button onclick="saveItem()">SaveItem</button>
+    <button onclick="addItem()">AddItem</button>
+    <button onclick="sortItems()">SortItems</button>
+    <button onclick="filterItems()">filterItems</button>
+  </body>
+</html>

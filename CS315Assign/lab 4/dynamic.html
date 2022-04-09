@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic</title>
+    <style>
+      /* input[type="checkbox"]{
+        background-color: rgb(47, 45, 45);
+        color: whitesmoke;
+        width: 60px;
+        height: 60px;
+        display: block;
+      } */
+
+      table {
+        margin-bottom: 20px;
+      }
+    </style>
+    <script>
+      // function addButton() {
+      //   let btnAdd = '<button onclick="addButton">add Button</button>';
+      //   // let addRow = '1'
+      //   let addList = document.getElementsByTagName("ul")[0];
+      //   let div = document.createElement("div");
+      //   div.innerHTML = btnAdd;
+      //   addList.append(div);
+      // }
+      // function addRow() {
+      //   let rowAdd='<li>Add Row</li>';
+      //   let uls = document.getElementsByTagName("ul")[0];
+      //   let ulContent = uls.innerHTML;
+      //   uls.innerHTML=rowAdd + ulContent;
+      // }
+
+      // function addSyblings(){
+      //   let flab=document.getElementById("flable");
+      //   let pElem= document.createElement("p");
+      //   pElem.innerHTML="The Very Biginning Element";
+      //   flab.before(pElem);
+      // }
+      // function removeInput() {
+      //   let deletInput = document.getElementsByTagName("input");
+      //   console.log(deletInput);
+      //   let delet = deletInput[0];
+      //   delet.remove();
+      // }
+      // function changeFun(){
+      //   let changeEl=document.getElementsByClassName("changeElem")[0];
+      //   // let pEl=document.createElement("p");
+      //   // pEl.innerHTML=changeEl.innerHTML;
+      //   // pEl.innerHTML="Changed🥇"
+      //   // changeEl.replaceWith(pEl);
+      //   changeEl.outerHTML="<p>"+"Changed🥇"+"</p>";
+      // }
+      // function childNodes(){
+      //   let selectElem=document.getElementsByTagName("select")[0];
+      //   for(let eachNodeCh of selectElem.children){
+      //     console.log(eachNodeCh.eachNode,eachNodes.textContent);
+      //   }
+      // }
+      // function hideShowFun(){
+      //   let selectElem=document.getElementsByTagName("select")[0];
+      //   selectElem.style.display="none";
+      //   let pFelement=document.getElementById("id2");
+      //   pFelement.innerHTML="Needs HardWork";
+      //   // pFelement.outerText="Needs HardWork";
+      // }
+      // function toggle(){
+      //   let togl=document.getElementById("toggleId");
+      //   let toggler = togl.style.display;
+      //   if(toggler=="none"){
+      //     togl.style.display=" ";
+      //   }else{
+      //     togl.style.display="none";
+      //   }
+      // }
+      let counter = 4;
+      window.onload = function () {
+        document.getElementById("one").onclick = addFirstRow;
+        document.getElementById("two").onclick = addLastRow;
+        document.getElementById("three").onclick = removeFirstRow;
+        document.getElementById("four").onclick = removeLastRow;
+        document.getElementById("five").onclick = addFirstRow;
+        document.getElementById("six").onclick = addFirstRow;
+        document.getElementById("seven").onclick = addFirstRow;
+      };
+      function addFirstRow() {
+        let heading = document.getElementById("headings");
+        let tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td> c " +
+          counter++ +
+          "</td><td c >" +
+          counter++ +
+          "</td><td> c " +
+          counter++ +
+          "</td>";
+        heading.after(tr);
+      }
+      function addLastRow() {
+        let table = document.getElementById("table");
+        let tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td> c " +
+          counter++ +
+          "</td><td c >" +
+          counter++ +
+          "</td><td> c " +
+          counter++ +
+          "</td>";
+        table.append(tr);
+      }
+      function removeLastRow() {
+        let table = document.getElementById("table");
+        let children = table.children;
+        let trs = children[0].children;
+        trs[trs.length - 1].remove();
+      }
+      function removeFirstRow() {
+        let table = document.getElementById("table");
+        let children = table.children;
+        let trs = children[0].children;
+        trs[0].remove();
+      }
+    </script>
+  </head>
+  <body>
+    <button id="one" style="background-color: aqua">addFirstRow</button>
+    <button id="two" style="background-color: aqua">addLastRow</button>
+    <button id="three" style="background-color: aqua">removeFirstRow</button>
+    <button id="four" style="background-color: aqua">removeLastrow</button>
+    <button id="five" style="background-color: aqua">removeSoecificRow</button>
+    <button id="six" style="background-color: aqua">replaceRow</button>
+    <button id="seven" style="background-color: aqua">changeColumns</button>
+    <caption>
+      <h2>Table</h2>
+    </caption>
+    <table id="table">
+      <tr id="headings">
+        <th>Per1</th>
+        <th>Per2</th>
+        <th>Per3</th>
+      </tr>
+      <tr id="cells">
+        <td>c1</td>
+        <td>c2</td>
+        <td>c3</td>
+      </tr>
+    </table>
+    <!-- <div id="toggleId">Radical Change Is Comming🥇</div>
+    <button onclick="toggle()">Toggle</button>
+    <p id="id2">AAAAAAAAAAAAAA</p>
+    <button onclick="hideShowFun()">Hide/Show</button>
+    <button onclick="childNodes">childNodes</button>
+    <div class="changeElem">For change</div>
+    <button onclick="changeFun()">changeElement</button>
+    <label id="flable">Name: </label>
+      <input type="text" value="" />
+      <textarea name="nameTekletsadik" id="Ty21"></textarea>
+      <input type="checkbox" name="Tekletsdik" id="Ty21" />Tekletsdaik 
+      <input type="checkbox" name="Yigzaw" id="Yt29" />Yigzaw
+      <input type="checkbox" name="Atnafu" id="At23" checked /> Atnafu
+   
+      <label for=""><input type="radio" name="wap" id="cs315" checked />CS315 </label>
+      <label><input type="radio" name="asp" id="CS445" />CS445</label>
+      <label><input type="radio" name="DBMS" id="CS473" />CS475</label>
+
+      <label><input type="radio" name="cc" value="visa" checked="checked" /> Visa</label>
+      <label><input type="radio" name="cc" value="mastercard" /> MasterCard</label>
+      <label><input type="radio" name="cc" value="amex" /> American Express</label>
+
+      <select
+        name="Countries"
+        id=""
+        size=""
+        
+      >
+        <optgroup label="Countries"> 
+          <option value="">Ethiopia</option>
+          <option value="">Eritrea</option>
+          <option value="" selected>USA</option>
+          <option value="">Russia</option>
+          <option value="">Indea</option>
+         </optgroup>
+        <optgroup label="Economy"> 
+          <option value="">poor</option>
+          <option value="">very poor</option>
+          <option value="" >Rich</option>
+          <option value="">Highly Rich</option>
+        </optgroup> 
+      </select> -->
+
+    <!-- <fieldset>
+        <legend>Chirstians Group</legend>
+        <input type="radio" name="jerry">jerry
+        <input type="radio" name="piter" checked > piter
+        <input type="radio" name="luke">luke
+      </fieldset>
+      <input type="reset" />
+      <input type="submit" />
+      <ul>
+        <li><button onclick="addButton()">add Button</button></li>
+        <li><button onclick="removeInput()">Remove Row</button></li>
+        <li><button onclick="addRow()">Add Row</button></li>
+      </ul>
+    </label>
+    <button onclick="addSyblings()">Add Sybling</button>
+      -->
+  </body>
+</html>
