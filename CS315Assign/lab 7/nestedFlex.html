@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Assignment</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin: 40px;
+        border: 2px solid black;
+        border-top: none;
+        border-right: none;
+        width: 70%;
+        padding: 5px;
+      }
+      #thirdPart,
+      #secondPart,
+      #firstPart {
+        background-color: aqua;
+        padding: 10px;
+        padding-bottom: 100px;
+      }
+      #btns {
+        display: flex;
+        flex-direction: column;
+      }
+      #buttons {
+        display: flex;
+        width: 100%;
+        flex-flow: row-wrap;
+        flex-grow: 2 100%;
+        flex-direction: row;
+        gap: 10px;
+        margin-left: 20px;
+        flex-wrap: 1 100px;
+      }
+      #buttons > * {
+        /* flex-grow: 2 0 100%; */
+        width: 100px;
+      }
+      #lastBtn {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 95%;
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="firstPart">
+        <h2>First Article</h2>
+        <p>
+          The order property is designed to lay the items out in ordinal groups.
+          What this means is that items are assigned an integer that represents
+          their group. The items are then placed in the visual order according
+          to that integer, lowest values first. If more than one item has the
+          same integer value, then within that group the items are laid out as
+          per source order
+        </p>
+      </div>
+      <div id="secondPart">
+        <h2>First Article</h2>
+        <p>
+          The order property is designed to lay the items out in ordinal groups.
+          What this means is that items are assigned an integer that represents
+          their group. The items are then placed in the visual order according
+          to that integer, lowest values first. If more than one item has the
+          same integer value, then within that group the items are laid out as
+          per source order
+        </p>
+      </div>
+      <div id="thirdPart">
+        <div id="btns">
+          <div id="buttons">
+            <button>Smile</button>
+            <button>Laugh</button>
+            <button>Wink</button>
+            <button>Shirug</button>
+          </div>
+          <div>
+            <button id="lastBtn">Blush</button>
+          </div>
+        </div>
+        <p>
+          The order property is designed to lay the items out in ordinal groups.
+          What this means is that items are assigned an integer that represents
+          their group. The items are then placed in the visual order according
+          to that integer, lowest values first.With the flex-grow property set
+          to a positive integer, flex items can grow along the main axis from
+          their flex-basis.
+        </p>
+        <p>
+          The order property is designed to lay the items out in ordinal groups.
+          What this means is that items are assigned an integer that represents
+          their group.This will cause the item to stretch and take up any
+          available space on that axis, or a proportion of the available space
+          if other items are allowed to grow too.
+        </p>
+      </div>
+    </div>
+    <br /><br />
+    <a
+      href="/CS315.github.io/CS315Assign/lab 7/navBar.html"
+      style="color: greenyellow"
+      >Please Visit This Link to Go NavBar Assignment👈</a
+    >
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NavBar</title>
+    <style>
+      .navBar {
+        background-color: rgb(207, 225, 243);
+        display: flex;
+        flex-direction: column;
+        margin: 100px;
+        justify-content: space-between;
+        gap: 100px;
+        padding: 15px;
+        color: white;
+      }
+      .box {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(20, 14, 14);
+        padding: 20px;
+        /* padding-left: 25px; */
+        /* padding-right: 25px; */
+      }
+      #first,
+      #second,
+      #third {
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+      .small {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        color: transparent;
+        text-shadow: 0 0 3px white;
+      }
+      #btn1,
+      #btn2,
+      #btn3 {
+        background-color: rgb(62, 78, 141);
+        border-radius: 10px;
+        height: 25px;
+        color: transparent;
+        text-shadow: 0 0 3px white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navBar">
+      <div class="box" id="first">
+        <div>LOGOBAKERY</div>
+        <div class="small">
+          <div>service</div>
+          <div>fresh</div>
+          <div>bread</div>
+        </div>
+        <div>
+          <button id="btn1">clickToOrder</button>
+        </div>
+      </div>
+      <div class="box" id="second">
+        <div style="order: 2">LOGOBAKERY</div>
+        <div class="small" style="order: 1">
+          <div>service</div>
+          <div>fresh</div>
+          <div>bread</div>
+          <button id="btn2">clickToOrder</button>
+        </div>
+      </div>
+      <div class="box" id="third">
+        <div style="order: 1">LOGOBAKERY</div>
+        <div class="small" style="order: 2">
+          <div>service</div>
+          <div>fresh</div>
+          <div>bread</div>
+          <button id="btn3">clickToOrder</button>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+    <a
+      href="/CS315.github.io/CS315Assign/lab 7/photoLayout.html"
+      style="color: greenyellow"
+      >Please Visit This Link to Go NavBar Assignment👈</a
+    >
+  </body>
+</html>
