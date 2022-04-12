@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab-8 Grid Assignment</title>
+    <style>
+      .bigBox{
+        border: 10px solid rgb(243, 237, 237) ;
+        border-top: none;
+        margin: 10%;
+        padding-top: 1%;
+        margin-bottom: 500px;
+      }
+      .container {
+        display: grid;
+        background-color: antiquewhite;
+        grid-template-rows: 2fr 1fr;
+        padding: 10px;
+        grid-gap: 20%;
+        color: white;
+        background-color: black;
+      }
+      .mainPart {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 10px;
+        grid-gap: 10%;
+      }
+      .oval{
+        background-color:rgb(40, 38, 38) ;
+        border:1px solid rgb(40, 38, 38);
+        border-radius: 20px;
+        padding-left: 5px;
+        width: fit-content;
+      }
+      #btn{
+        border-radius: 10px;
+        border-color: orange;
+        margin-left: 120px;
+        background-color:orange;
+      }
+
+      .part2{
+        display: grid;
+        grid-row:auto;
+      }
+      .tweet{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        
+      }
+      .ptag{
+        margin-top: -4px;
+        margin-left: -100px;
+      }
+      .part3{
+        display: grid;
+        gap: 0px;
+      }
+      .picture{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 0px;
+        margin-top: -100px;
+      }
+      /* .bottomPart{ */
+        /* background-color: brown; */
+      /* } */
+      .footer{
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bigBox">
+    <div class="container">
+      <div class="mainPart">
+        <div class="part1">
+          <h2>About Us</h2>
+          <p>
+            Grid Layout is a layout model for CSS that has powerful abilities to
+            control the sizing and positioning of boxes and their contents. Grid
+            Layout is optimized for 2-dimensional layouts: those in which
+            alignment of content is desired in both dimensions.Lines can be assigned the same name with the repeat() function. This can save you time from having
+            to name each line in track definitions. 
+          </p>
+          <div>
+            <label><img
+              src="/CS315.github.io/images/communication/phone1.png"
+              alt="phone"
+              style="height: 20px; margin-bottom: -5px"
+            /></label>
+            <label>+1 624 700 8017</label> 
+          </div>
+          <div><br>
+            <label><img
+              src="/CS315.github.io/images/communication/gmail.webp"
+              alt="phone"
+              style="height: 20px; margin-bottom: -5px"
+            /></label>
+            <label>info@gmail.com</label> 
+          </div><br><br>
+          <div class="oval">
+            Enter your e-mail <button id="btn">Send</button>
+          </div>
+      </div>
+
+      <div class="part2">
+        <h2>Latest Tweet</h2>
+        <div class="tweet">
+          <img src="/CS315.github.io/images/communication/tweter.jpeg" alt="tweeter" style="width: 20px;">
+          <p class="ptag">Tracks sizes can be defined to have a minimum and/or maximum size with the minmax()
+            function. minmax(min, max) is a functional notation that defines a size range.
+            </p>
+        </div>
+        <div class="tweet">
+          <img src="/CS315.github.io/images/communication/tweter.jpeg" alt="tweeter" style="width: 20px;" >
+          <p class="ptag">Tracks sizes can be defined to have a minimum and/or maximum size with the minmax()
+            function. minmax(min, max) is a functional notation that defines a size range.
+            </p>         
+        </div>
+        <div class="tweet">
+          <img src="/CS315.github.io/images/communication/tweter.jpeg" alt="tweeter" style="width: 20px;">
+          <p class="ptag">Tracks sizes can be defined to have a minimum and/or maximum size with the minmax()
+            function. minmax(min, max) is a functional notation that defines a size range.
+            </p>
+        </div>
+      </div>
+      <div class="part3">
+        <h2>Instagram</h2>
+        <div class="picture">
+          <img src="/CS315.github.io/images/Ethiopia/boleMedahnialem.jpg" alt="BoleChurch" style="width:150px; height: 150px;">
+          <img src="/CS315.github.io/images/background1.jpg" alt="background" style="width:150px; height:150px;">
+          <img src="/CS315.github.io/images/Ethiopia/lalibla.jpg" alt="laliblaChurch" style="width: 150px; height: 150px; margin-top: -100px;">
+          <img src="/CS315.github.io/images/Ethiopia/addisAbeba.jpg" alt="AddisAbebaEthiopia" style="width: 150px; height: 150px; margin-top: -100px;">
+        </div>
+      </div>
+    </div>
+    <div class="bottomPart">
+      <hr>
+      <div class="footer">
+        <h3>Home</h3>
+        <h3>About</h3>
+        <h3>Our works</h3>
+        <h3>Services</h3>
+        <h3>Blog</h3>
+        <h3>Contacts</h3>
+        <h3 style="margin-left: 500px; margin-right: 100px;">Colorlip</h3>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
