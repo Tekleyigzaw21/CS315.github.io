@@ -1,0 +1,280 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plants</title>
+    <style>
+      * {
+        box-sizing: content-box;
+      }
+      body {
+        margin: 50px;
+      }
+      .part1 {
+        display: inline;
+        font-size: 30px;
+      }
+
+      #btnAdd,
+      #finp {
+        font-size: 23px;
+      }
+      #pre1 {
+        font-size: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+      }
+      select[name="mul"] {
+        order: 3px solid rgb(44, 42, 42);
+        width: 110px;
+        font-weight: bold;
+        padding-left: 10px;
+
+        font-size: 20px;
+        height: 180px;
+        background-color: aliceblue;
+      }
+      select[name="last"] {
+        order: 3px solid rgb(44, 42, 42);
+        width: 110px;
+        font-weight: bold;
+        padding-left: 10px;
+
+        font-size: 20px;
+        height: 180px;
+        background-color: aliceblue;
+      }
+      */
+      /* #div1 {
+        border: 3px solid rgb(44, 42, 42);
+        width: 110px;
+        font-weight: bold;
+        padding-left: 10px; 
+ 
+        font-size: 20px;
+        height: 180px;
+        background-color: aliceblue; 
+      } */
+      /* #sEl {
+        border: 3px solid rgb(44, 42, 42);
+        width: 110px;
+        font-weight: bold;
+        margin-top: -40px;
+        display: flexbox; 
+        font-size: 20px;
+        height: 180px;
+        background-color: aliceblue;
+      } 
+
+      /* #pSec {
+        display: inline;
+        height: 180px;
+      } */
+      #btns1,
+      #btns2 {
+        margin-left: 10px;
+        margin-right: 10px;
+        /* margin-top: 100px;  */
+        /* position: relative; */
+        /* padding-bottom: 50%; */
+        /* text-align: ; */
+      }
+      #lbtn {
+        font-size: 20px;
+        font-weight: bold;
+        border-color: 3px solid rgb(50, 48, 48);
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        document.getElementById("btnAdd").onclick = addFun;
+        document.getElementById("btns1").onclick = addtodes;
+        document.getElementById("btns2").onclick = addtosrc;
+      };
+      function addFun() {
+        let inp = document.getElementById("finp");
+        let srce = document.getElementById("div1");
+        srce.append(inp.value);
+      }
+      // function addtodes() {
+      //   let opt = document.getElementById("div1");
+      //   let dest = document.getElementById("sEl");
+      //   // dest.innerHTML = opt.innerHTML;
+      //   dest.append(opt.innerHTML);
+      //   // opt.innerHTML = "";
+      // }
+      // function addtosrc() {
+      //   let opt = document.getElementById("div1");
+      //   let dest = document.getElementById("sEl");
+      //   opt.append(dest.innerHTML);
+      //   // dest.innerHTML = "";
+      //   // opt.innerHTML=dest.innerHTML;
+      // }
+    </script>
+  </head>
+  <body>
+    
+    <label><h1>Add Plant</h1></label><br />
+    <br />
+    <label class="Part1"
+      ><h2>
+        Plant Name: <input type="" id="finp" />
+        <button id="btnAdd" onclick="addFun()">Add</button>
+      </h2> </label
+    ><br />
+    <pre id="pre1">Source                      Destination</pre>
+    <br />
+    <lable
+      ><select name="mul" id="div1" size="3">
+        <option value="src">Oak</option>
+        <option value="src">Willow</option>
+        <option value="src">Chestnet</option>
+      </select></lable
+    >
+    <label><button id="btns1" onclick="addtodes()">></button></label>
+    <lable><button id="btns2" onclick="addtosrc"><</button></lable>
+    <label>
+      <select name="last" id="sEl" size="1">
+        <option>mapple</option>
+      </select></label
+    >
+
+    <br /><br />
+    <button id="lbtn">Sort</button>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin-left: 30px;
+      }
+      #pnId {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      div {
+        margin-top: 20px;
+      }
+      #deslable {
+        margin-left: 110px;
+      }
+      select {
+        margin-right: 10px;
+        padding: 5px;
+        /* height: 150px; */
+      }
+      #fdiv {
+        margin-top: 50px;
+      }
+    </style>
+    <script>
+      let plantArr = [];
+      let destbox, srcbox;
+      window.onload = function () {
+        srcbox = document.getElementsByName("source")[0];
+        destbox = document.getElementsByName("destination")[0];
+        document.getElementById("addbtn").onclick = add;
+        document.getElementById("moveToDest").onclick = moveToDest;
+        document.getElementById("moveToSrc").onclick = moveToSrc;
+        document.getElementById("sortItem").onclick = sortItem;
+      };
+      function add() {
+        let plantText = document.getElementById("inpt");
+        // plantArr.push(plantText.value);
+        // srcbox.append(plantArr);
+        let option = document.createElement("option");
+        option.innerHTML = plantText.value;
+        srcbox.append(option);
+        // function adddes() {
+        //   destbox.append(option);
+        // }
+      }
+      function moveToSrc() {
+        move(destbox, srcbox);
+      }
+      function move(srcbox, destbox) {
+        let selectedOptions = [];
+        for (let eachOption of srcbox.children) {
+          if (eachOption.selected) {
+            selectedOptions.push(eachOption);
+          }
+        }
+
+        for (let option of selectedOptions) {
+          console.log(option.outerHTML);
+          option.outerHTML = "";
+          destbox.append(option);
+        }
+      }
+      function moveToDest() {
+        move(srcbox, destbox);
+
+        let pEl = document.createElement("p");
+        pEl.innerHTML = "finshed";
+        let header = document.getElementById("id1");
+        header.after(pEl);
+        setTimeout(function () {
+          pEl.style.display = "none";
+        }, 5000);
+      }
+      function sortOption(srcbox) {
+        let itemArr = [];
+        for (let eachOption of srcbox.children) {
+          itemArr.push(eachOption.innerHTML);
+        }
+        itemArr.sort();
+
+        srcbox.innerHTML = "";
+        for (let item of itemArr) {
+          let option = document.createElement("option");
+          option.innerHTML = item;
+          srcbox.append(option);
+        }
+      }
+      function sortItem() {
+        sortOption(srcbox);
+        sortOption(destbox);
+      }
+    </script>
+  </head>
+  <body>
+    <h1 id="id1">Add Plants</h1>
+    <label id="pnId">Plant Name:</label>
+    <input type="text" id="inpt" value="" />
+    <input type="button" id="addbtn" value="Add" />
+    <div id="fdiv">
+      <label>Source</label>
+      <label id="deslable">Destination</label>
+    </div>
+    <div>
+      <labe>
+        <select name="source" id="srcId" size="3" multiple>
+          <option value="">owak</option>
+          <option value="">willow</option>
+          <option value="">Chestnet</option>
+        </select>
+      </labe>
+      <button id="moveToDest">></button>
+      <button id="moveToSrc"><</button>
+      <lable>
+        <select name="destination" id="destId" size="3" multiple>
+          <option value="">maple</option>
+          <option value="">yigzaw</option>
+          <option value="">atnafu</option>
+        </select>
+      </lable>
+    </div>
+    <div>
+      <button id="sortItem">Sort</button>
+    </div>
+  </body>
+</html>

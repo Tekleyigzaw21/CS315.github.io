@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MidExam</title>
+    <style>
+      body {
+        margin: 30px;
+      }
+      p {
+        color: red;
+      }
+      div {
+        margin: 15px;
+      }
+    </style>
+    <script>
+      // let checkboxOption;
+      window.onload = function () {
+        document.getElementById("addBtn").onclick = addFunction;
+        // document.getElementById("rembtn").onclick = removeFunction;
+        let checkboxOption = document.getElementById("checkboxes");
+        checkboxOption.children[1].onchange = toTableAdd;
+        checkboxOption.children[2].onchange = toListAdd;
+      };
+      //#Q2
+      let name, address, keyword;
+      let arrForTable = [];
+      let arrForList = [];
+      function addFunction() {
+        name = document.getElementById("inp1");
+        address = document.getElementById("inp2");
+        keyword = document.getElementById("inp3");
+
+        let nameLable = document.getElementById("lab1");
+        let addressLable = document.getElementById("lab2");
+        let keywordLable = document.getElementById("lab3");
+        let nameAlert = document.getElementById("nameAlert");
+        let addressAlert = document.getElementById("addressAlert");
+        let keywordAlert = document.getElementById("keywordAlert");
+
+        checkboxOption = document.getElementById("checkboxes");
+        let tableCheck = document.getElementById("toTable");
+        let listCheck = document.getElementById("toList");
+
+        let divTable = document.getElementById("table");
+        let divList = document.getElementById("list");
+
+        if (!name.value) {
+          name.style.borderColor = "red";
+          nameLable.style.display = "";
+          nameAlert.style.display = "";
+        } else {
+          name.style.borderColor = "";
+          nameLable.style.display = "none";
+          nameAlert.style.display = "none";
+        }
+        if (!address.value) {
+          address.style.borderColor = "red";
+          addressLable.style.display = "";
+          addressAlert.style.display = "";
+        } else {
+          address.style.borderColor = "";
+          addressLable.style.display = "none";
+          addressAlert.style.display = "none";
+        }
+        if (!keyword.value) {
+          keyword.style.borderColor = "red";
+          keywordLable.style.display = "";
+          keywordAlert.style.display = "";
+        } else {
+          keyword.style.borderColor = "";
+          keywordLable.style.display = "none";
+          keywordAlert.style.display = "none";
+        }
+        if (name.value && address.value && keyword.value) {
+          checkboxOption.style.display = "";
+          tableCheck.style.display = "";
+          listCheck.style.display = "";
+        }
+      }
+
+      function makeTable() {
+        divTable.innerHTML = "";
+        if (name.value && address.value && keyword.value) {
+          arrForTable.push({
+            name: name.value,
+            address: address.value,
+            keyword: keyword.value,
+          });
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Sites</h1>
+    <div>
+      <label id="lab1" style="color: red; display: none">*</label>
+      <input
+        type="text"
+        id="inp1"
+        placeholder="Enter Site Name"
+        onfocus="this.value=''"
+      />
+      <label id="lab2" style="color: red; display: none">*</label>
+      <input
+        type="text"
+        id="inp2"
+        placeholder="Enter Address"
+        onfocus="this.value=''"
+      />
+      <label id="lab3" style="color: red; display: none">*</label>
+      <input
+        type="text"
+        id="inp3"
+        placeholder="Enter keywords"
+        onfocus="this.value=''"
+      />
+      <input type="button" id="addBtn" value="Add" />
+    </div>
+    <div>
+      <p id="nameAlert" style="display: none">Please Enter Site Name</p>
+      <p id="addressAlert" style="display: none">Please Enter Address</p>
+      <p id="keywordAlert" style="display: none">Please Enter keyword</p>
+    </div>
+
+    <br /><br /><br />
+    <div id="checkboxes" style="display: none">
+      <input type="checkbox" id="toTable" />Table
+      <input type="checkbox" id="toList" />List
+    </div>
+    <div id="list"><h2>List</h2></div>
+    <br /><br />
+    <h2>Table</h2>
+    <div id="table"></div>
+    <div>
+      <input
+        type="button"
+        id="rembtn"
+        value="Remove Button"
+        onclick="removeFunction()"
+      />
+    </div>
+  </body>
+</html>

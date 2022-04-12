@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box</title>
+    <style>
+      div p {
+        margin-right: 5%;
+        width: 30%;
+        float: right;
+        background-color: aqua;
+      }
+      div img {
+        background-color: yellowgreen;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin: 50px">
+      <p>
+        Margins can have positive or negative values. Setting a negative margin
+        on one side of your box can cause it to overlap other things on the
+        page. • We can control all margins of an element at once using the
+        margin property, or each side individually using the equivalent longhand
+        properties • Whether you are using the standard or alternative box
+        model, the margin is always added after the size of the visible box has
+        been calculated.
+      </p>
+      <a href="default"
+        ><img
+          src="/CS315.github.io/images/happy-thumbs-.webp"
+          alt="sad Dog (Hangry)"
+          style="height: 200px; width: 200px"
+      /></a>
+    </div>
+    <div style="position: sticky; left: 40px; border: 1px solid yellowgreen">
+      margin is always added after the size of the visible box
+      <div style="width: 100px; height: 200px"></div>
+    </div>
+  </body>
+</html>

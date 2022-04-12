@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midterm</title>
+    <style>
+      body {
+        margin: 40px;
+      }
+
+      div {
+        margin-bottom: 20px;
+      }
+
+      input {
+        padding: 5px;
+      }
+
+      p {
+        color: red;
+      }
+
+      label {
+        color: red;
+      }
+
+      .tableHeader {
+        background-color: rgb(93, 154, 1);
+        color: white;
+      }
+
+      tr,
+      td {
+        border: solid;
+        border-color: whitesmoke;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        let addButton = document.getElementById("addButton");
+        addButton.onclick = pageDisplay;
+        let addOption = document.getElementById("addOption");
+        addOption.children[1].onchange = makeTableCaller;
+        addOption.children[2].onchange = makeListCaller;
+        let removeButton = document.getElementById("removeButton");
+        removeButton.onclick = removeItem;
+      };
+      let name;
+      let address;
+      let keywords;
+      let sitesDiv;
+      let listArr = [];
+      let tableArr = [];
+      let listDiv;
+      let tableDiv;
+      let tableCheck;
+      let listCheck;
+      //Question 2 setting up the validation displays and messages
+      function pageDisplay() {
+        tableCheck = document.getElementById("tableCheck");
+        listCheck = document.getElementById("listCheck");
+        listDiv = document.getElementById("list");
+        tableDiv = document.getElementById("table");
+        name = document.getElementById("siteName");
+        address = document.getElementById("address");
+        keywords = document.getElementById("keywords");
+        sitesDiv = document.getElementById("sites");
+        let namemsg = document.getElementById("namemsg");
+        let addressmsg = document.getElementById("addressmsg");
+        let keymsg = document.getElementById("keymsg");
+        addOption = document.getElementById("addOption");
+        let astreik1 = document.getElementById("1");
+        let astreik2 = document.getElementById("2");
+        let astreik3 = document.getElementById("3");
+        if (!name.value) {
+          name.style.borderColor = "red";
+          namemsg.style.display = "";
+          astreik1.style.display = "";
+        } else {
+          namemsg.style.display = "none";
+          astreik1.style.display = "none";
+          name.style.borderColor = "";
+        }
+        if (!address.value) {
+          address.style.borderColor = "red";
+          addressmsg.style.display = "";
+          astreik2.style.display = "";
+        } else {
+          addressmsg.style.display = "none";
+          astreik2.style.display = "none";
+          address.style.borderColor = "";
+        }
+        if (!keywords.value) {
+          keywords.style.borderColor = "red";
+          keymsg.style.display = "";
+          astreik3.style.display = "";
+        } else {
+          keymsg.style.display = "none";
+          astreik3.style.display = "none";
+          keywords.style.borderColor = "";
+        }
+        if (name.value && address.value && keywords.value) {
+          //Question 2 and 3 showing the addOption and removing all validation messages
+          addOption.style.display = "";
+          tableCheck.style.display = "";
+          listCheck.style.display = "";
+        }
+      }
+      //calls makeList function if list checkbox is checked
+      function makeListCaller() {
+        if (this.checked) {
+          makeList();
+        }
+      }
+      //calls makeTable function if table checkbox is checked
+      function makeTableCaller() {
+        if (this.checked) {
+          makeTable();
+        }
+      }
+      //Question 4 making a sorted table
+      function makeTable() {
+        //pageDisplay();
+        tableDiv.innerHTML = "";
+        if (name.value && address.value && keywords.value) {
+          tableArr.push({
+            name: name.value,
+            address: address.value,
+            keyword: keywords.value,
+          });
+        }
+        tableArr.sort((a, b) => {
+          if (a.name > b.name) {
+            return 1;
+          } else if (a.name < b.name) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+        let table = document.createElement("table");
+        table.innerHTML =
+          " <tr class='tableHeader'><th onclick=reverseSorting(this)>Site Name</th><th>KeyWords</th></tr>";
+        for (let element of tableArr) {
+          let newRow = document.createElement("tr");
+          let cell1 = document.createElement("td");
+          let cell2 = document.createElement("td");
+          cell1.innerHTML =
+            "<a href=" + element.address + ">" + element.name + "</a>";
+          cell2.innerHTML = element.keyword;
+          newRow.append(cell1);
+          newRow.append(cell2);
+          table.append(newRow);
+          tableDiv.append(table);
+          //Question 9 setting amazon link to be green and keywords to be blue
+          if (element.name == "amazon") {
+            cell1.children[0].style.color = "green";
+            cell2.style.color = "blue";
+          }
+        }
+        //Question 10 changing 3 row of table to blue background color
+        if (tableDiv.children[0].children.length > 3) {
+          tableDiv.children[0].children[3].style.backgroundColor = "blue";
+        }
+        tableCheck.style.display = "none";
+      }
+
+      //sort the tableArr in reverse order;
+      function makeReverseTable() {
+        tableDiv.innerHTML = "";
+        if (name.value && address.value && keywords.value) {
+          tableArr.push({
+            name: name.value,
+            address: address.value,
+            keyword: keywords.value,
+          });
+        }
+        tableArr.sort((a, b) => {
+          if (a.name > b.name) {
+            return -1;
+          } else if (a.name < b.name) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        let table = document.createElement("table");
+        table.innerHTML =
+          " <tr class='tableHeader'><th onclick=reverseSorting(this)>Site Name</th><th>KeyWords</th></tr>";
+        for (let element of tableArr) {
+          let newRow = document.createElement("tr");
+          let cell1 = document.createElement("td");
+          let cell2 = document.createElement("td");
+          cell1.innerHTML =
+            "<a href=" + element.address + ">" + element.name + "</a>";
+          cell2.innerHTML = element.keyword;
+          newRow.append(cell1);
+          newRow.append(cell2);
+          table.append(newRow);
+          tableDiv.append(table);
+          //Question 9 setting amazon link to be green and keywords to be blue
+          if (element.name == "amazon") {
+            cell1.children[0].style.color = "green";
+            cell2.style.color = "blue";
+          }
+        }
+        //Question 10 changing 3 row of table to blue background color
+        if (tableDiv.children[0].children.length > 3) {
+          tableDiv.children[0].children[3].style.backgroundColor = "blue";
+        }
+      }
+      //Question 4 making a sorted list
+      function makeList() {
+        //pageDisplay();
+        if (name.value && address.value && keywords.value) {
+          let keywordsArr = keywords.value.split(",");
+          listArr.push({
+            name: name.value,
+            address: address.value,
+            keyword: keywordsArr,
+          });
+        }
+        listArr.sort((a, b) => {
+          if (a.name > b.name) {
+            return 1;
+          } else if (a.name < b.name) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+        listDiv.innerHTML = " <h1>List</h1>";
+        for (let element of listArr) {
+          let itemTitle = document.createElement("span");
+          let listelement = document.createElement("ul");
+          itemTitle.innerHTML =
+            "<a href=" + element.address + ">" + element.name + "</a>";
+          for (let item of element.keyword) {
+            let li = document.createElement("li");
+            li.innerHTML = item;
+            listelement.append(li);
+          }
+          listDiv.append(itemTitle);
+          listDiv.append(listelement);
+          //Question 9 setting amazon link to be green and keywords to be blue
+          if (element.name == "amazon") {
+            itemTitle.children[0].style.color = "green";
+            listelement.style.color = "blue";
+          }
+        }
+        listCheck.style.display = "none";
+        if (
+          listCheck.style.display == "none" &&
+          tableCheck.style.display == "none"
+        ) {
+          addOption.style.display = "none";
+        }
+      }
+      //Question 8 removing matching sites from both the table and the list
+      function removeItem() {
+        name.value = "";
+        address.value = "";
+        keywords.value = "";
+        let nameToremove = prompt("Which Site Name do you want to remove");
+        let listArrFiltered = listArr.filter(
+          (item) => item.name !== nameToremove
+        );
+        listArr = listArrFiltered;
+        makeList();
+        let tableArrFiltered = tableArr.filter(
+          (item) => item.name !== nameToremove
+        );
+        tableArr = tableArrFiltered;
+        makeTable();
+      }
+      //Question 7 changing the sorting order of the table on Site Name toggle
+      function reverseSorting() {
+        name.value = "";
+        address.value = "";
+        keywords.value = "";
+        let checkArr = [];
+        let helpArr = [];
+        for (let element of tableArr) {
+          helpArr.push(element.name);
+        }
+        makeTable();
+        helpArr.forEach((item, index) => {
+          if (item < helpArr[index + 1]) {
+            checkArr.push(true);
+          } else {
+            checkArr.push(false);
+          }
+        });
+        for (let element of checkArr) {
+          if (element) {
+            makeReverseTable();
+          }
+        }
+      }
+    </script>
+  </head>
+  <!-- Question 1 -->
+
+  <body>
+    <h1>Sites</h1>
+    <div id="sites">
+      <label id="1" style="display: none">*</label
+      ><input
+        type="text"
+        placeholder="Enter Site Name"
+        id="siteName"
+        onfocus="this.value=''"
+      />
+      <label id="2" style="display: none">*</label
+      ><input
+        type="text"
+        placeholder="Enter Adress"
+        id="address"
+        onfocus="this.value=''"
+      />
+      <label id="3" style="display: none">*</label
+      ><input
+        type="text"
+        placeholder="Enter Keywords"
+        id="keywords"
+        onfocus="this.value=''"
+      />
+      <input type="button" value="Add" id="addButton" />
+    </div>
+    <div id="addOption" style="display: none">
+      <!-- Question 3 Add options -->
+      <span>Add To</span>
+      <input type="checkbox" id="tableCheck" />Table
+      <input type="checkbox" id="listCheck" />List
+    </div>
+    <!-- Question 2 validation messages -->
+    <p id="namemsg" style="display: none">Please Enter Name</p>
+    <p id="addressmsg" style="display: none">Please Enter Address</p>
+    <p id="keymsg" style="display: none">Please Enter Keywords</p>
+    <div id="list">
+      <h1>List</h1>
+    </div>
+    <h1>Table</h1>
+    <div id="table"></div>
+    <div>
+      <input type="button" value="Remove Site" id="removeButton" />
+    </div>
+  </body>
+</html>
