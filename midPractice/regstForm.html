@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .container {
+        border: 2px solid #ccc;
+        width: 50%;
+        padding: 20px;
+        margin: 40px;
+        border-left: none;
+        border-bottom: 4px solid #ccc;
+      }
+      hr {
+        border-top: 4px solid gold;
+        margin: -20px;
+      }
+      .inputs {
+        display: grid;
+        grid-template-rows: repeat(9, 1fr);
+        grid-gap: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <hr />
+      <br />
+      <h1>Responsive Registration Form</h1>
+      <div class="inputs">
+        <div class="form1">
+          <input type="button" value="✉" />
+          <input type="email" value="" placeholder="Email" />
+        </div>
+        <div class="form2">
+          <input type="button" value="🔒" />
+          <input type="email" value="" placeholder="Password" />
+        </div>
+        <div class="form1">
+          <input type="button" value="🔒" />
+          <input type="email" value="" placeholder="Re-type Password" />
+        </div>
+        <div class="form2">
+          <input type="button" value="✉" />
+          <input type="email" value="" placeholder="Email" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
