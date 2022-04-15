@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PracticeQuestions</title>
+    <script>
+      //Q1. Sum all numbers till the given one
+      function sumFun(n) {
+        if (n == 0) return 0;
+        else {
+          return n + sumFun(n - 1);
+        }
+      }
+      console.log(sumFun(5)); //15
+
+      //Q2. Calculate factorial
+      function factorialNum(n) {
+        if (n == 0) return 1;
+        if (n == 1) return 1;
+        else {
+          return n * factorialNum(n - 1);
+        }
+      }
+      console.log(factorialNum(4)); //24
+
+      //Q3. Fibonacci numbers (the dynamic programming solution is optional)
+      function fibFun(n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        else {
+          return fibFun(n - 1) + fibFun(n - 2);
+        }
+      }
+      // console.log(fibFun(1));
+      // console.log(fibFun(2));
+      // console.log(fibFun(3));
+      console.log(fibFun(4));
+      // Iterative way
+      function fibFun(n) {
+        let n1 = 0,
+          n2 = 1,
+          nextNum;
+        for (let i = 1; i <= n; i++) {
+          console.log(n1);
+          nextNum = n1 + n2;
+          n1 = n2;
+          n2 = nextNum;
+        }
+      }
+      // console.log(fibFun(1));
+      // console.log(fibFun(2));
+      // console.log(fibFun(3));
+      console.log(fibFun(5));
+
+      //Q4. Output a single-linked list
+      let list = {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 3,
+            next: {
+              value: 4,
+              next: null,
+            },
+          },
+        },
+      };
+      function printListIterate(list) {
+        while (list) {
+          console.log(list);
+          list = list.next;
+        }
+      }
+
+      function printListRec(list) {
+        console.log(list.value);
+        if (list.next) {
+          printListRec(list.next);
+        }
+      }
+      printListIterate(list);
+
+      let lists = {
+        value: 10,
+        next: {
+          value: 20,
+          next: {
+            value: 25,
+            next: {
+              value: 30,
+              next: null,
+            },
+          },
+        },
+      };
+      printListRec(lists);
+      function printList(list) {
+        console.log(list.value); // output the current item
+        if (list.next) {
+          printList(list.next); // do the same for the rest of the list
+        }
+      }
+      printList(lists);
+      //Q5 Output a single-linked list in reverse order
+      //Itrative way
+      function reverse(head) {
+        let node = head,
+          previous,
+          tmp;
+        while (node) {
+          // save next before we overwrite node.next!
+          tmp = node.next;
+          // reverse pointer
+          node.next = previous;
+          // step forward in the list
+          previous = node;
+          node = tmp;
+        }
+        return previous;
+      }
+      console.log(reverse(lists));
+      //recurssive way
+      function reverse(head) {
+        if (!head || !head.next) {
+          return head;
+        }
+        let tmp = reverse(head.next);
+        head.next.next = head;
+        head.next = undefined;
+        return tmp;
+      }
+      console.log(reverse(lists));
+      //Part-Two
+      let node3 = {
+        name: "p",
+        value: "This is text in the a paragraph",
+        children: null,
+      };
+
+      let node4 = {
+        name: "label",
+        value: "Name",
+        children: null,
+      };
+      let node5 = {
+        name: "input",
+        value: "this was typed by a user",
+        children: null,
+      };
+      let node2 = {
+        name: "div",
+        value: null,
+        children: [node4, node5],
+      };
+      let node1 = {
+        name: "body",
+        children: [node2, node3],
+        value: null,
+      };
+      //*********************Q#1************************//
+      function getNameValuePair(node) {
+        if (node.children == null) {
+          return node.name + ":" + node.value;
+        } else {
+          for (let child of node.children) {
+            getNameValuePair(child);
+          }
+          return node.name + ":" + node.value;
+        }
+      }
+      console.log(getNameValuePair(node1));
+      //Q2
+      function getNameValueArray(node) {
+        let arr = [];
+        if (node.children == null) {
+          arr = arr.concat(node.name + ":" + node.value);
+          return arr;
+        }
+        for (let child of node.children) {
+          arr = arr.concat(getNameValueArray(child));
+        }
+        return arr;
+      }
+      console.log(getNameValueArray(node1));
+      //**************#Q3*********************************//
+      function TreeNode(value) {
+        this.value = value;
+        this.descendents = [];
+      }
+      const abe = new TreeNode("Abe");
+      const homer = new TreeNode("Homer");
+      const bart = new TreeNode("Bart");
+      const lisa = new TreeNode("Lisa");
+      const maggie = new TreeNode("Maggie");
+
+      abe.descendents.push(homer);
+      homer.descendents.push(bart, lisa, maggie);
+
+      // ***************Q#1************************//
+      function getNames(node) {
+        if (node.descendents == []) return node.value;
+        else {
+          let result = [];
+          result = result.concat(node.value);
+          for (let elem of node.descendents)
+            result = result.concat(getNames(elem));
+
+          return result;
+        }
+      }
+
+      //***********************Q#2****************************//
+      function searchName(node, str) {
+        if (node.descendents == [] && node.value == str) return true;
+        else {
+          if (node.value == str) return true;
+          else {
+            for (let elem of node.descendents) {
+              console.log("For loop", elem.value);
+              searchName(elem, str);
+            }
+          }
+          return false;
+        }
+      }
+      console.log(searchName(abe, "maggie"));
+
+      //***********************Q#3****************************//
+      function getSubTree(node, val) {
+        if (node.descendents == [] && node.value == val) return node;
+        else {
+          let result = null;
+          if (node.value == val) {
+            console.log("Node true");
+            return node;
+          } else {
+            for (let elem of node.descendents) {
+              console.log("For loop", elem.value);
+              result = getSubTree(elem, val);
+              if (result != null) break;
+            }
+          }
+          return result;
+        }
+      }
+      console.log(getSubTree(abe, "Homer"));
+
+      // Creating CONSTRUCTOR for ListNode
+      function listNode(value) {
+        this.value = value;
+        this.next = null;
+      }
+      const maggieList = new listNode("Maggie");
+      const lisaList = new listNode("Lisa");
+      lisaList.next = maggieList;
+      const bartList = new listNode("Bart");
+      bartList.next = lisaList;
+      const homerList = new listNode("Homer");
+      homerList.next = bartList;
+      const abeList = new listNode("Abe");
+      abeList.next = homerList;
+      console.log("the linked list is ", abeList);
+
+      function findListNode(list, str) {
+        if (list.next != null && list.value == str) return list;
+        else {
+          let result = null;
+          if (list.value == str) {
+            result = list;
+          } else {
+            result = findListNode(list.next, str);
+          }
+          return result;
+        }
+      }
+      console.log(findListNode(abeList, "Bart"));
+    </script>
+  </head>
+  <body>
+    <h3
+      style="
+        background-color: aqua;
+        color: rgb(75, 9, 20);
+        width: fit-content;
+        margin: 60px;
+      "
+    >
+      Go to inspect to get solution👈
+    </h3>
+  </body>
+</html>
